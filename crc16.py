@@ -8,13 +8,12 @@
 lengthOfString = 0      # длина входной строки
 
 def crc16(inputString):
-    
+##  Байт-массив из Modbus-строки.
     bytesOfString = bytearray.fromhex(inputString)
 
 ##    for b in bytesOfString:
 ##        print(b)
-##    Забираем существующее значение CRC16 из сообщения
     
+##  Существующее значение CRC.
     existCRC16 = bytesOfString[(len(bytesOfString) - 1)] + \
                  bytesOfString[(len(bytesOfString) - 2)]
-    print(existCRC16)
