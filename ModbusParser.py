@@ -18,14 +18,26 @@ print("\n", "." * 10, "MODBUS parser", "." * 10, "\n")
 ##    print("Wrong input")
 ##
 
-####-------------------------------------------------
-####Тестирование работы с переменными типа Bytes.
-####Передаём значение, заведомо большее, чем 1 байт...
-##bytesTest = bytes.fromhex("ffffff")
-##
-##print(type(bytesTest))
-##print(f"Lenght of array = {len(bytesTest)}")
-##print(f"Байты в переменной bytesTest: {bytesTest}")
-##
-####for b in bytesTest:
-####    print(b)
+##-------------------------------------------------
+##Тестирование работы с переменными типа Bytes.
+##-------------------------------------------------
+##Передаём значение, заведомо большее, чем 1 байт...
+bytesTest = bytes.fromhex("ffffff")
+
+print(type(bytesTest))
+print(f"Lenght of array = {len(bytesTest)}")
+print(f"Байты в переменной bytesTest: {bytesTest}")
+
+for b in bytesTest:
+    print(b)
+
+bytesToJoin = bytes.fromhex("ff")
+bytesTest += bytesToJoin;
+bytesArray = bytearray([df, a1])
+bytesTest.join(bytesArray)
+
+print(f"Lenght of array = {len(bytesTest)}")
+print(f"Байты в переменной bytesTest: {bytesTest}")
+
+for b in bytesTest:
+    print(b)

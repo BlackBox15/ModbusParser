@@ -5,11 +5,9 @@
 ## пересчитываем CRC-сумму для сегмента данных и сравниваем с существующим
 ## значением CRC-суммы.
 
-lengthOfString = 0      # длина входной строки
-
 def crc16(inputString):
 ##  Байт-массив из Modbus-строки.
-    bytesOfString = bytearray.fromhex(inputString)
+    bytesOfString = bytes.fromhex(inputString)
 
 ##    for b in bytesOfString:
 ##        print(b)
