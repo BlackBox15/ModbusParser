@@ -23,9 +23,9 @@ def crc16(inputString):
     for i in range(len(dataModbus) - 2):
         # For is here.
         #
-        print("{0:#x}".format(dataModbus[i]))   # Actual type output string representing.
+##        print("{0:#x}".format(dataModbus[i]))   # Actual type output string representing.
 
-        # XOR'им байт с контрольной суммой.
+        # XOR'им i-й байт с контрольной суммой.
         CRCreg ^= dataModbus[i]
         
         # Побитовые операции.
