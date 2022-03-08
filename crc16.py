@@ -20,7 +20,7 @@ def crc16(inputString):
     dataModbus = bytes.fromhex(inputString)
 
     # Проходим через весь массив байт за исключением последних 2-х байт.
-    for i in range(len(dataModbus) - 2):
+    for i in range(len(dataModbus)):
         # For is here.
         #
 ##        print("{0:#x}".format(dataModbus[i]))   # Actual type output string representing.
@@ -30,34 +30,14 @@ def crc16(inputString):
         
         # Побитовые операции.
         for j in range(8):
-            # For is here
-            #
-            CRCreg >>= 1
             
-##            if (CRCreg & 1) == 1:
-##                CRCreg >>= 1
-##                CRCreg ^= CRCPolynome_inv
-##            else:
-##                CRCreg >>= 1
+            if (CRCreg & 1) == 1:
+                CRCreg >>= 1
+                CRCreg ^= CRCPolynome_inv
+            else:
+                CRCreg >>= 1
             
-
+    return CRCreg
             
-    print("0:#x".format(CRCreg))
+##    print("{0:#x}".format(CRCreg))
 
-
-
-
-
-
-
-
-##    for b in bytesOfString:
-####        print(f"%0#x" % b)        # Old type output string representing.
-##        print("{0:#x}".format(b))   # Actual type output string representing.
-##    
-#### Существующее значение CRC хранится в последних 2-х байтах
-#### Modbus-сообщения.
-##    existCRC16 = bytesOfString[(len(bytesOfString) - 1)] + \
-##                 bytesOfString[(len(bytesOfString) - 2)]
-##
-crc16("01 03 43 8f b3 78")  # Just for testing.
