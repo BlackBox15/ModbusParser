@@ -10,14 +10,14 @@
 ##-------------------------------------------------
 
 
-def crc16(inputString):
+def crc16(dataModbus):
     
     # Полином для вычисления CRC.
     CRCPolynome_inv = 0xA001
     # Вычисленная CRC-сумма.
     CRCreg = 0xFFFF
-    # Байт-массив из Modbus-строки, неизменяемый (immutable).
-    dataModbus = bytes.fromhex(inputString)
+##    # Байт-массив из Modbus-строки, неизменяемый (immutable).
+##    dataModbus = bytes.fromhex(inputString)
 
     # Проходим через весь массив байт за исключением последних 2-х байт.
     for i in range(len(dataModbus)):
