@@ -9,10 +9,9 @@ print("\n", "." * 10, "MODBUS parser", "." * 10, "\n")
 
 
 ##    Запрос Modbus-строки
-    modbusString = input("Input an MODBUS string\n")
-    for i in range(len(modbusString)-2):
-        
-##    crc16.crc16(modbusString)
+modbusString = input("Input an MODBUS string\n")
+
+print("{0:x}".format(crc16.crc16(modbusString)))
 
 ##actionToPerform = int(input("Input a type of data: 1 - pool, 2 - responce\n"))
 
