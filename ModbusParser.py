@@ -34,10 +34,10 @@ if (len(sys.argv) > 1):
             
             if (sys.argv[1] == '-p'):
                 # Дешифровка Modbus-сообщения как Pool.
-                print("Дешифровка Modbus-сообщения как Pool.")
+                print("Decoding as a Pool.")
             elif (sys.argv[1] == '-r'):
                 # Дешифровка Modbus-сообщения как Request.
-                print("Дешифровка Modbus-сообщения как Request.")
+                print("Decoding as a Request.")
                 RequestDecode.decode(pdu)
         else:
             print("CRC isn't correct")
