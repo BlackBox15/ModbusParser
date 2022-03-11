@@ -4,12 +4,18 @@
 ##-------------------------------------------------
 
 def decode(inPDU):
-    bytesQuantity = 
-    print('''
-{0:#x} \t 1 \t Device address
-{1:#x} \t 2 \t Functional code
-{2:#x} \t 3 \t Bytes quanity
-
-{2:#x}{3:x} \t 3,4 \t 1st register address
-{4:#x}{5:x} \t 5,6 \t Nums of register to read
+    # Количество байт с данными.
+    bytesQuantity = inPDU[2]
+    cntr = 0
+    
+    print("-" * 30)
+    print("Byte\tDescription")
+    print("-" * 30)
+    
+    print('''{0:#x} \tDevice address
+{1:#x} \tFunctional code
+{2:#x} \tBytes quanity
         '''.format(*inPDU))
+
+    for n in inPDU[3:bytesQuantity + 3]:
+        print("{:#x} {:x}".format(*inPDU[3:bytesQuantity + 3]))

@@ -3,10 +3,13 @@ import sys
 import crc16
 import HelpPage
 import RequestDecode
+import PoolDecode
 ##-------------------------------------------------
 ## Тестовая строка
-## -r "01 03 d7 f3 32 ff 78 1a"    CRC isn't correct
-## -r "01 03 d7 f3 32 ff d9 6d"    CRC is correct
+## -r "01 03 d7 f3 32 ff 78 1a"             CRC isn't correct
+## -r "01 03 d7 f3 32 ff d9 6d"             CRC is correct
+##
+## -p "01 03 06 03 fd 45 e1 2f 5a 95 a3"    CRC is correct
 ##-------------------------------------------------
 ##print("\n", "." * 10, "MODBUS parser", "." * 10, "\n")
 
@@ -35,6 +38,7 @@ if (len(sys.argv) > 1):
             if (sys.argv[1] == '-p'):
                 # Дешифровка Modbus-сообщения как Pool.
                 print("Decoding as a Pool.")
+                PoolDecode.decode(pdu)
             elif (sys.argv[1] == '-r'):
                 # Дешифровка Modbus-сообщения как Request.
                 print("Decoding as a Request.")
