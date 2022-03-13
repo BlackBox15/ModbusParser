@@ -2,12 +2,19 @@
 ## Дешифровка PDU (protocol data unit) как ответ.
 ## PDU - это Modbus-строка без CRC-суммы.
 ##-------------------------------------------------
-
 def decode(inPDU):
+    """
+    Дешифровка Modbus-ответа от полевого устройства.
+    В качестве аргумента передаём bytes.
+    Без CRC-суммы!
+    """
+    
     # Количество байт с данными.
     bytesQuantity = inPDU[2]
+    
     cntr = 0
     
+    # Рисуем таблицу.
     print("-" * 30)
     print("Byte\tDescription")
     print("-" * 30)
@@ -18,5 +25,5 @@ def decode(inPDU):
 {2:#x} \tBytes quanity
         '''.format(*inPDU))
 
-    for n in inPDU[3:bytesQuantity + 3]:
-        print("{:x}".format(n))
+##    for n in inPDU[3:bytesQuantity + 3]:
+##        print("{:x}".format(n))
