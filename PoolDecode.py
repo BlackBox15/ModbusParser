@@ -26,6 +26,11 @@ def decode(inPDU):
 {1:#x} \tFunctional code
 {2:#x} \tBytes quanity
         '''.format(*inPDU))
-
-##    for n in inPDU[3:bytesQuantity + 3]:
-##        print("{:x}".format(n))
+    
+    # Рисуем таблицу.
+    print("-" * 30)
+    print("Data")
+    print("-" * 30)
+    
+    for n in inPDU[3:bytesQuantity + 3]:
+        print("{:#x}".format(n))
