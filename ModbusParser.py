@@ -1,3 +1,12 @@
+"""
+Дешифровка Modbus-сообщения.
+
+-r "string of hex" - дешифровка Modbus-сообщения, как request
+-p "string of hex" - дешифровка Modbus-сообщения, как pool
+
+Результат выводится на экран в таблице.
+"""
+
 # импорт для возможности чтения входящих аргументов
 import sys
 import crc16
@@ -14,25 +23,26 @@ import PoolDecode
 ##print("\n", "." * 10, "MODBUS parser", "." * 10, "\n")
 
 if (len(sys.argv) > 1):
-    # Случай, когда есть аргументы в командной строке.
+    # Есть аргументы в CLI.
     if (sys.argv[1] != '-p') and (sys.argv[1] != '-r') :
-        # Выводим страницу помощи.
+        # Страница помощи при отсутствии ключей в CLI.
         HelpPage.printHelpPage()
     elif (sys.argv[2] != ''):
-        # У нас команда или -r, или -p.
-        # Наличие Modbus-строки в аргументе командной строки.
+        # Есть ключ -r, или -p.
+        # Есть наличие Modbus-строки в аргументе CLI.
+        # Парсим 2-й аргумент из hex в bytes.
         ModbusBytes = bytes.fromhex(sys.argv[2])
-        # Вычисляем CRC для данной Modbus-строки без последних 2 байт.
-        # Крайние 2 байта "срезаем" в отдельную переменную.
+        # Существующая CRC-сумма из Modbus-сообщения.
+        # Расположена как 2 последних байта в сообщении.
         crcExisted = ModbusBytes[-2:]
         # Modbus-сообщение без последних 2-х байт - это PDU.
         # Protocol Data Unit.
         pdu = ModbusBytes[:len(ModbusBytes) - 2]
-        # Вычисляем CRC для полученного PDU.
-        # Для сравнения.
+        # Актуальный CRC для полученного PDU.
         crcNew = (crc16.crc16(pdu)).to_bytes(2, 'little')
-        
+
         if (crcExisted == crcNew):
+            # Совпадение существующей и расчётной CRC.
             print("CRC is correct.")
             
             if (sys.argv[1] == '-p'):
@@ -47,6 +57,6 @@ if (len(sys.argv) > 1):
             print("CRC isn't correct")
             
 else:
-    # Случай, когда нет аргументов в командной строке.
+    # Нет аргументов в командной строке.
     # Выводим страницу помощи.
     HelpPage.printHelpPage()
