@@ -11,3 +11,5 @@ foo.txt
 tmp.file
 # Ignore this
 /__*__
+# Ignoring .DS_Store
+.DS_Store

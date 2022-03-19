@@ -22,15 +22,15 @@ def decode(inPDU):
     print("-" * 30)
 
     # Вывод на экран.
-    print('''{0:#x} \tDevice address
-{1:#x} \tFunctional code
-{2:#x} \tBytes quanity
+    print('''{0:#04x} \tDevice address
+{1:#04x} \tFunctional code
+{2:#04x} \tBytes quanity
         '''.format(*inPDU))
     
     # Рисуем таблицу.
     print("-" * 30)
-    print("Data")
+    print("Data in bytes")
     print("-" * 30)
     
     for n in inPDU[3:bytesQuantity + 3]:
-        print("{:#x}".format(n))
+        print("{:#04x}".format(n))

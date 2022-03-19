@@ -19,6 +19,7 @@ import PoolDecode
 ## -r "01 03 d7 f3 32 ff d9 6d"             CRC is correct
 ##
 ## -p "01 03 06 03 fd 45 e1 2f 5a 95 a3"    CRC is correct
+## -r "01 03 3f 00 00 0c 49 db"             CRC is correct
 ##-------------------------------------------------
 ##print("\n", "." * 10, "MODBUS parser", "." * 10, "\n")
 
